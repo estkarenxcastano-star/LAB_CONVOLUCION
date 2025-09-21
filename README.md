@@ -387,6 +387,70 @@ Y clasificamos la señal:
 + **Periódica o aperiódica: La señal es Aperiódica, ya que no hay repetición regular; la correlación no muestra picos repetidos a intervalos fijos y la FFT no tiene líneas discretas separadas.**
 + **Analógica o digital: Es una señal Digital, la señal está muestreada y representada por valores discretos en el tiempo. Físicamente modela un proceso analógico EOG, pero es registro es digital.**
 
+A continuacion se realizó la densidad espectral de potencia y se analizó los estadísticos en el dominio de la frecuencia de la señal:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import welch
+
+# Suponemos que ya tienes x_resampled y fs_new
+x = x_resampled
+fs = fs_new
+
+# 1) Calcular PSD
+freqs, Pxx = welch(x, fs=fs_new, nperseg=1024)
+
+# Normalizar PSD para usar como "probabilidad" en histograma
+PSD_norm = PSD / np.sum(PSD)
+
+# 2) Gráfica de la PSD
+plt.figure(figsize=(9,4))
+plt.semilogy(freqs, Pxx, color='magenta')
+plt.title("Densidad Espectral de Potencia (PSD)")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("PSD [mV²/Hz]")  # ajusta unidad
+plt.xlim(0, 5)  # enfocarse en bajas frecuencias
+plt.grid(True, which="both")
+plt.show()
+
+
+# 3) Histograma de frecuencias
+plt.figure(figsize=(8,4))
+plt.hist(freqs, bins=30, weights=PSD_norm, color='#40E0D0', edgecolor='black')
+plt.title("Distribución de Potencia en Frecuencia")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Probabilidad relativa")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# 4) Estadísticos en frecuencia
+f_mean = np.sum(freqs * PSD_norm)
+cdf = np.cumsum(PSD_norm)
+f_median = freqs[np.searchsorted(cdf, 0.5)]
+f_std = np.sqrt(np.sum((freqs - f_mean)**2 * PSD_norm))
+
+print("\n Estadísticos en el dominio de la frecuencia")
+print("-------------------------------------------------")
+print(f"Frecuencia media:   {f_mean:.3f} Hz")
+print(f"Frecuencia mediana: {f_median:.3f} Hz")
+print(f"Desviación estándar:{f_std:.3f} Hz")
+```
+### RESULTADOS
++ **DENSIDAD ESPECTRAL DE POTENCIA**
+<img width="709" height="352" alt="image" src="https://github.com/user-attachments/assets/41467175-4e23-400a-b6b4-cd808c88a815" />
+
++ **HISTOGRAMA DE FRECUENCIAS**
+<img width="709" height="353" alt="image" src="https://github.com/user-attachments/assets/cd860505-a975-4000-92a8-548738c77c07" />
+
+### ESTADISTICOS EN EL DOMINIO DE LA FRECUENCIA
++ **Frecuencia media:   4.062 Hz**
++ **Frecuencia mediana: 1.953 Hz**
++ **Desviación estándar:9.536 Hz**
+  
+
+
 
 
 
