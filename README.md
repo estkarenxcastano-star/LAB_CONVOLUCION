@@ -149,7 +149,78 @@ Las señales que nos dan son las siguientes:
 - $x_1[nT_s] = \cos(2\pi 100nT_s), \quad 0 \leq n < 9$
 - $x_2[nT_s] = \sin(2\pi 100nT_s), \quad 0 \leq n < 9$
 
-A conto
+A continuación se realiza la correlación cruzada:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import correlate, correlation_lags
+
+# ===========================
+# Parámetros y señales
+# ===========================
+Ts = 1.25e-3   # periodo de muestreo [s]
+fs = 1/Ts      # frecuencia de muestreo [Hz]
+f0 = 100       # frecuencia de la señal [Hz]
+n = np.arange(0, 9)   # índices 0..8
+t = n * Ts
+
+# Definición de señales
+x1 = np.cos(2*np.pi*f0*t)
+x2 = np.sin(2*np.pi*f0*t)
+
+# ===========================
+# Correlación cruzada
+# ===========================
+r12 = correlate(x1, x2, mode='full')          # no normalizada
+lags = correlation_lags(len(x1), len(x2), mode='full')
+
+# Normalización
+norm_factor = np.sqrt(np.dot(x1, x1) * np.dot(x2, x2))
+r12_norm = r12 / norm_factor
+
+# ===========================
+# Gráfica 1: Señales originales
+# ===========================
+plt.figure(figsize=(9,3))
+plt.stem(t, x1, basefmt="k-", linefmt="C0-", markerfmt="C0o", label="x1[n] = cos(2π100nTs)")
+plt.stem(t, x2, basefmt="k-", linefmt="C1-", markerfmt="C1s", label="x2[n] = sin(2π100nTs)")
+plt.title("Señales discretas x1[n] y x2[n]")
+plt.xlabel("Tiempo [s]")
+plt.ylabel("Amplitud")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# ===========================
+# Gráfica 2: Correlación no normalizada
+# ===========================
+plt.figure(figsize=(9,3))
+plt.stem(lags, r12, basefmt="k-", linefmt="m-", markerfmt="mo")
+plt.title("Correlación cruzada r_{x1,x2}[lag] (no normalizada)")
+plt.xlabel("lag [muestras]")
+plt.ylabel("r[lag]")
+plt.grid(True)
+plt.show()
+
+# ===========================
+# Gráfica 3: Correlación normalizada
+# ===========================
+plt.figure(figsize=(9,3))
+plt.stem(lags, r12_norm, basefmt="k-", linefmt="m-", markerfmt="mo")
+plt.title("Correlación cruzada normalizada r_{x1,x2}[lag]")
+plt.xlabel("lag [muestras]")
+plt.ylabel("r_norm[lag]")
+plt.ylim(-1.1, 1.1)  # resaltar rango [-1,1]
+plt.grid(True)
+plt.show()
+```
+### RESULTADOS OBTENIDOS
+<img width="699" height="282" alt="image" src="https://github.com/user-attachments/assets/56c24895-af4a-4f19-be29-31f99be26749" />
+<img width="685" height="278" alt="image" src="https://github.com/user-attachments/assets/b60eaa3c-48bc-4344-bb6e-98f4efcf0601" />
+<img width="698" height="283" alt="image" src="https://github.com/user-attachments/assets/d898bac9-6778-4fc4-a28c-ee7358416879" />
+
+
 
 
 
