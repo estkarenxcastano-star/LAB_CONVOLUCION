@@ -15,7 +15,7 @@ GRÁFICA
 ## En Python
 ### Karen
 
-´´´ python
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -44,6 +44,10 @@ plt.ylabel("Amplitud")
 plt.legend()
 plt.grid(True)
 plt.show()
-´´´
+```
+
+
+
+
 
 
