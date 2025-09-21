@@ -266,7 +266,7 @@ plt.show()
 Obteniendo la siguiente gráfica:
 <img width="1258" height="468" alt="image" src="https://github.com/user-attachments/assets/20eb013d-a820-4f57-a8bd-0043281650f3" />
 
-A continuación determinamos la frecuencia de Nyquist y digitalizamos la señal utilizando una frecuencia de muestreo que sea 4 veces la frecuencia de Nyquist y el coódigo quedó de la siguiente manera:
+A continuación determinamos la frecuencia de Nyquist y digitalizamos la señal utilizando una frecuencia de muestreo que sea 4 veces la frecuencia de Nyquist y el código quedó de la siguiente manera:
 
 ```python
 # 1. Cargamos la señal
