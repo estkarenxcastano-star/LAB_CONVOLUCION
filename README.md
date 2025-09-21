@@ -238,6 +238,7 @@ Teniendo en cuenta esto, lo que podemos describir de la secuencia resultante es:
 
 # PARTE C
 Con ayuda del generador de señales fisiológicas, se obtuvo la señal de un EOG, a la cual se le hallo las medidas estadísticas y la Transformada de Fourier.
+
 <img width="237" height="1280" alt="image" src="https://github.com/user-attachments/assets/d4c50846-9153-42b5-ab81-0b37731a6af9" />
 
 Se extrajo la señal del generador de señales fisiológicas por medio de un DAQ y se graficó con el siguiente código:
