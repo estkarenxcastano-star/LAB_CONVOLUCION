@@ -13,7 +13,7 @@ GRÁFICA
 ### Alissia
 ### Raúl
 ## En Python
-### + Karen
+### - Karen
 
 ```python
 import numpy as np
