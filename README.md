@@ -4,16 +4,27 @@
 En este laboratorio se pretende comprender y aplicar los conceptos fundamentales del procesamiento de señales, utilizando la convolución para determinar la respuesta de un sistema discreto, la correlación como medida de similitud entre señales y la Transformada de Fourier como herramienta de análisis en el dominio de la frecuencia.
 # PARTE A
 Se realizo la convolucioón de las señales x(n) y h(n), tanto a mano como en python, de cada uno de los integrantes del grupo.
+## LIBRERIAS
+Las librerias que implementamos fueron las siguientes:
+
++ **Importación de librerias**
+```phyton
+import numpy as np
+import matplotlib.pyplot as plt
+!pip install wfdb
+from scipy.stats import kurtosis
+import wfdb
+```
 ## A mano
-### Karen
+### + **Karen**
 CONVOLUCIÓN
 <img width="1000" height="1390" alt="image" src="https://github.com/user-attachments/assets/39e440d0-d69c-41cc-934b-e63bd866082a" />
 GRÁFICA
 <img width="1000" height="764" alt="image" src="https://github.com/user-attachments/assets/3cc04951-d661-4bc8-b684-101044d458c9" />
-### Alissia
-### Raúl
+### + **Alissia**
+### + **Raúl**
 ## En Python
-### - Karen
+### + **Karen**
 
 ```python
 import numpy as np
