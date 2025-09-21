@@ -134,6 +134,8 @@ plt.show()
 ### GRÁFICA
 <img width="902" height="435" alt="image" src="https://github.com/user-attachments/assets/5ba1b078-41b9-4f00-b45c-14ff6aaf6f55" />
 
+Se realizo el cálculo de la convolución de dos señales discretas, donde la función que se utilizó para esta tarea fue `np.convolve` de la librería **Numpy**. Esta función recibe como entrada la señal x(n) y la respuesta al impulso h(n) y devuelve como salida y(n), que corresponde a una convolución líneal.
+La convolución es importante porque describe como una señal se modifica cuando pasa por un sistema, esta operación se utiliza para aplicar filtros, mejorar o atenuar ciertas frecuencias, eliminar ruido, o extraer información relevante de una señal.
 
 
 
