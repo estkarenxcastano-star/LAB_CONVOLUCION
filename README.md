@@ -387,7 +387,7 @@ Y clasificamos la señal:
 + **Periódica o aperiódica: La señal es Aperiódica, ya que no hay repetición regular; la correlación no muestra picos repetidos a intervalos fijos y la FFT no tiene líneas discretas separadas.**
 + **Analógica o digital: Es una señal Digital, la señal está muestreada y representada por valores discretos en el tiempo. Físicamente modela un proceso analógico EOG, pero es registro es digital.**
 
-A continuacion se realizó la densidad espectral de potencia y se analizó los estadísticos en el dominio de la frecuencia de la señal:
+A continuacion se realizó el cálculo de la densidad espectral de potencia y se analizó los estadísticos en el dominio de la frecuencia de la señal:
 
 ```python
 import numpy as np
