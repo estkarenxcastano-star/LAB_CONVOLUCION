@@ -3,6 +3,7 @@
 ### Objetivo
 En este laboratorio se pretende comprender y aplicar los conceptos fundamentales del procesamiento de señales, utilizando la convolución para determinar la respuesta de un sistema discreto, la correlación como medida de similitud entre señales y la Transformada de Fourier como herramienta de análisis en el dominio de la frecuencia.
 # PARTE A
+
 Se realizo la convolución de las señales x(n) y h(n), tanto a mano como en python, de cada uno de los integrantes del grupo.
 <img width="336" height="1280" alt="image" src="https://github.com/user-attachments/assets/0ac85b41-078e-4aca-bfb9-71c84910b7fb" />
 
@@ -135,7 +136,18 @@ plt.show()
 <img width="902" height="435" alt="image" src="https://github.com/user-attachments/assets/5ba1b078-41b9-4f00-b45c-14ff6aaf6f55" />
 
 Se realizo el cálculo de la convolución de dos señales discretas, donde la función que se utilizó para esta tarea fue `np.convolve` de la librería **Numpy**. Esta función recibe como entrada la señal x(n) y la respuesta al impulso h(n) y devuelve como salida y(n), que corresponde a una convolución líneal.
+
 La convolución es importante porque describe como una señal se modifica cuando pasa por un sistema, esta operación se utiliza para aplicar filtros, mejorar o atenuar ciertas frecuencias, eliminar ruido, o extraer información relevante de una señal.
+
+# PARTE B
+
+Se realizo la correlación cruzada de dos señales dadas y se determino su importancia en el procesamiento digital de señales.
+<img width="363" height="1280" alt="image" src="https://github.com/user-attachments/assets/bb076aa0-c52d-4c2b-83f3-44843574d6e1" />
+
+- $x_1[nT_s] = \cos(2\pi 100nT_s), \quad 0 \leq n < 9$
+- $x_2[nT_s] = \sin(2\pi 100nT_s), \quad 0 \leq n < 9$
+
+  
 
 
 
