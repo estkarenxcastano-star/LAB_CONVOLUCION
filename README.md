@@ -4,7 +4,7 @@
 En este laboratorio se pretende comprender y aplicar los conceptos fundamentales del procesamiento de señales, utilizando la convolución para determinar la respuesta de un sistema discreto, la correlación como medida de similitud entre señales y la Transformada de Fourier como herramienta de análisis en el dominio de la frecuencia.
 # PARTE A
 
-Se realizo la convolución de las señales x(n) y h(n), tanto a mano como en python, de cada uno de los integrantes del grupo.
+Se realizo la convolución de las señales **$x[n]$** y **$h[n]$**, tanto a mano como en python, de cada uno de los integrantes del grupo.
 <img width="336" height="1280" alt="image" src="https://github.com/user-attachments/assets/0ac85b41-078e-4aca-bfb9-71c84910b7fb" />
 
 ## LIBRERIAS
@@ -236,7 +236,7 @@ Teniendo en cuenta esto, lo que podemos describir de la secuencia resultante es:
 4. **Procesamiento Biomédico: mide la similitud entre señales, que también revela la existencia de retardos fisiológicos, sincronización o descoordinación entre distintas regiones del cuerpo.**
 5. **Sistemas de posicionamiento y comunicaciones inalámbricas: Se utiliza para sincronizar la señal recibida con una señal piloto enviada, ayudando a estimar distancias y tiempos de llegada.**
 
-#PARTE C
+# PARTE C
 Con ayuda del generador de señales fisiológicas, se obtuvo la señal de un EOG, a la cual se le hallo las medidas estadísticas y la Transformada de Fourier.
 <img width="237" height="1280" alt="image" src="https://github.com/user-attachments/assets/d4c50846-9153-42b5-ab81-0b37731a6af9" />
 
