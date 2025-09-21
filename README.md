@@ -448,7 +448,11 @@ print(f"Desviación estándar:{f_std:.3f} Hz")
 + **Frecuencia media:   4.062 Hz**
 + **Frecuencia mediana: 1.953 Hz**
 + **Desviación estándar:9.536 Hz**
-  
+
+La señal EOG procesada muestra un dominio espectral cargado en frecuencias muy bajas (<0.5 Hz), lo cual es característico de este tipo de biopotenciales oculares. Esto explica el “casco” o pico fuerte observado al inicio del espectro.
+En el dominio temporal, la señal exhibe eventos no periódicos asociados a parpadeos y movimientos oculares, más un componente aleatorio (ruido instrumental y fisiológico).
+
+En consecuencia, la señal no puede considerarse determinística ni periódica, sino que se clasifica como aleatoria, aperiódica y digital, reflejando tanto la naturaleza fisiológica del EOG como el proceso de adquisición por computadora.
 
 
 
