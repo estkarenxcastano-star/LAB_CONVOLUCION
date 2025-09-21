@@ -7,13 +7,13 @@ Se realizo la convolucioón de las señales x(n) y h(n), tanto a mano como en py
 ## A mano
 ### Karen
 CONVOLUCIÓN
-<img width="1000" height="1452" alt="image" src="https://github.com/user-attachments/assets/10a5e85c-daa5-4e32-a74c-32e2d7699a9d" />
+<img width="1000" height="1390" alt="image" src="https://github.com/user-attachments/assets/39e440d0-d69c-41cc-934b-e63bd866082a" />
 GRÁFICA
 <img width="1000" height="764" alt="image" src="https://github.com/user-attachments/assets/3cc04951-d661-4bc8-b684-101044d458c9" />
 ### Alissia
 ### Raúl
 ## En Python
-### Karen
+### + Karen
 
 ```python
 import numpy as np
