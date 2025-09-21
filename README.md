@@ -220,6 +220,15 @@ plt.show()
 <img width="685" height="278" alt="image" src="https://github.com/user-attachments/assets/b60eaa3c-48bc-4344-bb6e-98f4efcf0601" />
 <img width="698" height="283" alt="image" src="https://github.com/user-attachments/assets/d898bac9-6778-4fc4-a28c-ee7358416879" />
 
+La correlacion cruzada es una herramienta que nos dice que tan parecidas son dos señales, en diferentes posiciones, mide el grado de similitud entre ellas a medida que una se va desplazando (desfasando) con respecto a la otra.
+
+Teniendo en cuenta esto, lo que podemos describir de la secuencia resultante es:
++ **Presenta valores elevados en las posiciones donde las dos señales coinciden en forma y desplazamiento, mientras que en los otros desplazamientos los valores disminuyen o tieden a cero**
++ **Como el seno y el coseno estan desfasados 90°, la correlación presenta valores negativos y positivos, alternados, sin alcanzar un máximo de coincidencia en `lag=0`**.
++ **Dado que coseno y seno son ortogonales en un período completo, la correlación promedio tenderá a ser cercana a cero, confirmando que son señales diferentes pero relacionadas.**
++ **Los picos positivos y negativos de la correlación muestran los puntos de máxima similitud y máxima oposición según el corrimiento aplicado.**
+
+### ¿En qué situaciones resulta útil aplicar la correlación cruzada en el procesamiento digital de señales? 
 
 
 
