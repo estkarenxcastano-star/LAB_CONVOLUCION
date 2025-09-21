@@ -336,6 +336,55 @@ print(f"Mínimo: {minimo:.4f}")
 + **Máximo: 2.2859**
 + **Mínimo: -1.2537**
 
+### Transformada de Fourier
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft, fftfreq
+from scipy.signal import butter, filtfilt
+
+# ---------- 1) Preprocesado ----------
+# Quitar componente DC (media)
+x_no_dc = x_resampled - np.mean(x_resampled)
+
+# Filtro pasa-altas Butterworth (corte en 0.05 Hz)
+fc = 0.05  # Hz
+b, a = butter(N=4, Wn=fc/(fs_new/2), btype='highpass')
+x_hp = filtfilt(b, a, x_no_dc)
+
+# ---------- 2) Función FFT (amplitud normalizada) ----------
+def fft_pos_amp(x, fs):
+    N = len(x)
+    X = fft(x)
+    f = fftfreq(N, 1/fs)
+    pos = slice(0, N//2)
+    amp = np.abs(X[pos]) / N  # amplitud por Hz
+    return f[pos], amp
+
+f_orig, A_orig = fft_pos_amp(x_resampled, fs_new)
+f_hp,   A_hp   = fft_pos_amp(x_hp, fs_new)
+
+# ---------- 3) Gráfica comparativa ----------
+plt.figure(figsize=(9,4))
+plt.semilogx(f_orig, A_orig, label="Original", color="C0")
+plt.semilogx(f_hp,   A_hp,   label=f"Filtrada (HP > {fc} Hz)", color="C1")
+plt.title("Transformada de Fourier (comparación)")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Amplitud [mV/Hz]")  # ajusta unidad si aplica
+plt.xlim(1e-2, 0.5)   # rango 0.01 a 0.5 Hz
+plt.grid(True, which="both")
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+### GRÁFICA
+<img width="801" height="349" alt="image" src="https://github.com/user-attachments/assets/0295eb31-c662-4043-ba3e-57587af37ff9" />
+
+Y clasificamos la señal:
++ **Determinística o aleatoria: Es una señal Aleatoria, ya que incluye ruido y eventos transitorios con tiempos y amplitudes no deterministas, es decir que no hay parpadeos.**
++ **Periódica o aperiódica: La señal es Aperiódica, ya que no hay repetición regular; la correlación no muestra picos repetidos a intervalos fijos y la FFT no tiene líneas discretas separadas.**
++ **Analógica o digital: Es una señal Digital, la señal está muestreada y representada por valores discretos en el tiempo. Físicamente modela un proceso analógico EOG, pero es registro es digital.**
 
 
 
