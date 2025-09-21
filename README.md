@@ -3,7 +3,7 @@
 ### Objetivo
 En este laboratorio se pretende comprender y aplicar los conceptos fundamentales del procesamiento de señales, utilizando la convolución para determinar la respuesta de un sistema discreto, la correlación como medida de similitud entre señales y la Transformada de Fourier como herramienta de análisis en el dominio de la frecuencia.
 # PARTE A
-Se realizo la convolucioón de las señales x(n) y h(n), tanto a mano como en python, de cada uno de los integrantes del grupo.
+Se realizo la convolución de las señales x(n) y h(n), tanto a mano como en python, de cada uno de los integrantes del grupo.
 <img width="336" height="1280" alt="image" src="https://github.com/user-attachments/assets/0ac85b41-078e-4aca-bfb9-71c84910b7fb" />
 
 ## LIBRERIAS
@@ -41,7 +41,7 @@ from numpy.fft import fft, fftfreq
 ![img19](https://github.com/user-attachments/assets/8371adad-c301-443c-8681-25e25ca1ac3b)
 
 ## En Python
-+**Karen**
++ **Karen**
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -72,7 +72,7 @@ plt.show()
 ### GRÁFICA
 <img width="852" height="437" alt="image" src="https://github.com/user-attachments/assets/382f5793-1779-45d7-b3bf-57beafa23c1c" />
 
-+**Alissia**
++ **Alissia**
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -103,7 +103,7 @@ plt.show()
 ### GRÁFICA
 <img width="942" height="439" alt="image" src="https://github.com/user-attachments/assets/6e69c88e-c5ee-4079-b55d-b915515170f3" />
 
-+**Raúl**
++ **Raúl**
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
