@@ -454,7 +454,11 @@ En el dominio temporal, la señal exhibe eventos no periódicos asociados a parp
 
 En consecuencia, la señal no puede considerarse determinística ni periódica, sino que se clasifica como aleatoria, aperiódica y digital, reflejando tanto la naturaleza fisiológica del EOG como el proceso de adquisición por computadora.
 
+### Análisis de los Datos Estadísticos
 
++ **Frecuencia Media: la energía espectral de la señal EOG se concentra en torno a los 4 Hz, esto tiene mucho sentido ya que los movimientos oculares tienen componentes de baja frecuencia, asociadas al parpadeo y a los desplazamientos oculares.**
++ **Frecuencia Mediana: La mediana representa el punto donde se concentra el 50% de la energía total de la señal, esta se encuentra en las frecuencias muy bajas, lo que podría deberse a movimientos muy lentos de los parpadeos y esta predomina sobre los datos de mayor frecuencia.**
++ **Desviación Estándar: aunque la mayor parte de la energía está en bajas frecuencias, existe dispersión significativa hacia frecuencias más altas, esto puede deberse a ruido (por ejemplo, actividad muscular o interferencia eléctrica de 50/60 Hz), o a eventos rápidos en la señal (como micro-movimientos oculares).**
 
 
 
