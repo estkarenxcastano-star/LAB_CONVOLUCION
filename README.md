@@ -230,6 +230,115 @@ Teniendo en cuenta esto, lo que podemos describir de la secuencia resultante es:
 
 ### ¿En qué situaciones resulta útil aplicar la correlación cruzada en el procesamiento digital de señales? 
 
+1. **Detección de patrones: Se usa para identificar si una señal contiene una señal conocida.**
+2. **Estimación de retardo (delay): Permite calcular cuánto está desfasada una señal con respecto a otra, útil en sistemas de sincronización.**
+3. **Procesamiento de audio y voz: Se aplica para reconocimiento de voz, cancelación de eco y para sincronizar audio grabado con señales de referencia.**
+4. **Procesamiento Biomédico: mide la similitud entre señales, que también revela la existencia de retardos fisiológicos, sincronización o descoordinación entre distintas regiones del cuerpo.**
+5. **Sistemas de posicionamiento y comunicaciones inalámbricas: Se utiliza para sincronizar la señal recibida con una señal piloto enviada, ayudando a estimar distancias y tiempos de llegada.**
+
+#PARTE C
+Con ayuda del generador de señales fisiológicas, se obtuvo la señal de un EOG, a la cual se le hallo las medidas estadísticas y la Transformada de Fourier.
+<img width="237" height="1280" alt="image" src="https://github.com/user-attachments/assets/d4c50846-9153-42b5-ab81-0b37731a6af9" />
+
+Se extrajo la señal del generador de señales fisiológicas por medio de un DAQ y se graficó con el siguiente código:
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import correlate
+from numpy.fft import fft, fftfreq
+
+df = pd.read_csv("Señal_EOG.txt", sep="\t")
+
+print(df.head())
+
+# Graficar la señal
+plt.figure(figsize=(12,4))
+plt.plot(df["time_s"], df["EOG_mV"], linewidth=1)
+plt.xlabel("Tiempo (s)")
+plt.ylabel("EOG (mV)")
+plt.title("Señal EOG simulada")
+plt.tight_layout()
+plt.show()
+```
+Obteniendo la siguiente gráfica:
+<img width="1258" height="468" alt="image" src="https://github.com/user-attachments/assets/20eb013d-a820-4f57-a8bd-0043281650f3" />
+
+A continuación determinamos la frecuencia de Nyquist y digitalizamos la señal utilizando una frecuencia de muestreo que sea 4 veces la frecuencia de Nyquist y el coódigo quedó de la siguiente manera:
+
+```python
+# 1. Cargamos la señal
+df = pd.read_csv("Señal_EOG.txt", sep="\t")
+
+# Señal original
+t = df["time_s"].values
+x = df["EOG_mV"].values
+
+# Frecuencia de muestreo
+fs = 1 / np.mean(np.diff(t))
+print(f"Frecuencia de muestreo: {fs:.2f} Hz")
+
+# 2. Frecuencia de Nyquist
+f_nyquist = fs / 2
+print(f"Frecuencia de Nyquist: {f_nyquist:.2f} Hz")
+
+# 3. Nueva frecuencia de muestreo (4 veces Nyquist)
+fs_new = 4 * f_nyquist
+print(f"Nueva frecuencia de muestreo: {fs_new:.2f} Hz")
+
+# 4. Número de muestras en la nueva señal
+dur = t[-1] - t[0]
+n_new = int(dur * fs_new)
+
+# 5. Digitalización con nueva Fs
+from scipy.signal import resample
+x_resampled = resample(x, n_new)
+t_resampled = np.linspace(t[0], t[-1], n_new)
+
+# 6. Graficar comparación
+plt.figure(figsize=(12,5))
+plt.plot(t, x, label="Original (250 Hz)", alpha=0.7)
+plt.plot(t_resampled, x_resampled, label=f"Resampleado ({fs_new:.0f} Hz)", linewidth=1)
+plt.xlabel("Tiempo (s)")
+plt.ylabel("EOG (mV)")
+plt.title("Comparación: Señal original vs. Digitalizada")
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+Obteniendo los siguientes resultados:
++ **Frecuencia de muestreo: 250.00 Hz**
++ **Frecuencia de Nyquist: 125.00 Hz**
++ **Nueva frecuencia de muestreo: 500.00 Hz**
+
+<img width="1067" height="437" alt="image" src="https://github.com/user-attachments/assets/7b4bae10-351d-4f49-a487-14cf5a20aee5" />
+
+Luego caracterizamos la señal según las medidas estadísticas:
+```python
+media = np.mean(x_resampled)
+mediana = np.median(x_resampled)
+desv_std = np.std(x_resampled)
+maximo = np.max(x_resampled)
+minimo = np.min(x_resampled)
+
+print("===== Características estadísticas =====")
+print(f"Media: {media:.4f}")
+print(f"Mediana: {mediana:.4f}")
+print(f"Desviación estándar: {desv_std:.4f}")
+print(f"Máximo: {maximo:.4f}")
+print(f"Mínimo: {minimo:.4f}")
+```
+### Resultados
++ **Media: 0.0227**
++ **Mediana: 0.0901**
++ **Desviación estándar: 0.6214**
++ **Máximo: 2.2859**
++ **Mínimo: -1.2537**
+
+
+
+
 
 
 
